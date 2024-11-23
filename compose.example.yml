@@ -1,0 +1,8 @@
+services:
+  api:
+    image: stefdp/lyrics-api
+    ports:
+      - 3000:3000
+    build: .
+    container_name: lyrics-api
+    restart: unless-stopped
