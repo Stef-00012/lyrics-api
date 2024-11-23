@@ -6,9 +6,7 @@ on:
         paths:
             - "src/**"
             - "Dockerfile"
-            - "config.js"
             - "package.json"
-            - "drizzle.config.js"
 
     workflow_dispatch:
 
