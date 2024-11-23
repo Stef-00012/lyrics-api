@@ -1,0 +1,12 @@
+{
+	"scripts": {
+		"start": "bun run src/index.ts"
+	},
+	"dependencies": {
+		"@stef-0012/synclyrics": "^2.5.10",
+		"express": "^4.21.1"
+	},
+	"devDependencies": {
+		"@types/express": "^5.0.0"
+	}
+}
