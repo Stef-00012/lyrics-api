@@ -20,6 +20,8 @@ Just make a HTTP GET request to the <code>/lyrics</code> endpoint with your song
 
 ## Example Request
 ```js
+// default base URL is 'https://lyrics-api.stefdp.lol' unless you selfhost.
+// if you selfhost it, it's 'http://localhost:3000'
 fetch("<baseUrl>/lyrics?artist=Henry+Moodie&track=Drunk+Text")
     .then((res) => res.json())
     .then((data) => {
