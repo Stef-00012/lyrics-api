@@ -16,7 +16,6 @@ const LyricsManager = new SyncLyrics({
 	},
 	sources: ["musixmatch", "lrclib", "netease"],
 	cache,
-	logLevel: "info"
 });
 
 app.get("/", (req, res) => {

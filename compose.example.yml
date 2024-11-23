@@ -1,6 +1,6 @@
 services:
   api:
-    image: stefdp/lyrics-api
+    image: stefdp/lyrics-api:latest
     ports:
       - 3000:3000
     build: .
