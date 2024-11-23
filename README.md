@@ -4,6 +4,13 @@
 This API is free and has no rate limit.<br />
 The lyrics are fetched from the <a href="https://npmjs.com/@stef-0012/synclyrics"><code>@stef-0012/synclyrics</code></a> NPM, which takes the  lyrics from <a href="https://musixmatch.com">Musixmatch</a>, <a href="https://lrclib.net">LrcLib.net</a> and <a href="https://music.163.com">Netease</a>.
 
+## Installation
+
+1. `git clone https://github.com/Stef-00012/lyrics-api`
+2. `cd lyrics-api`
+3. `bun install`
+4. `npm run start`
+
 ## How Does It Work?
 
 Just make a HTTP GET request to the <code>/lyrics</code> endpoint with your song's metadata as query parameter.
