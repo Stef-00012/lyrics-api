@@ -1,13 +1,167 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>SyncLyrics API</title>
-        
-        <style>
 
-        </style>
-    </head>
-    <body>
+<head>
+    <title>SyncLyrics API</title>
 
-    </body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/highlightjs@9.16.2/styles/atom-one-dark.css">
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            background-color: #3c274e;
+            color: #cda7d2
+        }
+
+        code {
+            background-color: #70437f;
+            padding: 3px;
+            border-radius: 5px;
+            color: #cda7d2;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 0;
+        }
+
+        h3 {
+            font-size: 30px;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        a {
+            color: #bc82c4;
+        }
+
+        a:visited {
+            color: #96529b;
+        }
+
+        ul {
+            list-style-position: inside;
+        }
+
+        ul li {
+            text-align: left;
+        }
+
+        .list {
+            display: flex;
+            justify-content: center;
+        }
+
+        pre {
+            text-align: left;
+        }
+
+        .code-block-container {
+            margin: 6%;
+            margin-top: 0;
+        }
+
+        .code-block-pre {
+            margin-bottom: 0;
+        }
+
+        .code-block {
+            max-height: 60vh;
+        }
+
+        .footnotes {
+            text-align: left;
+            margin-top: 0
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SyncLyrics API</h1>
+
+    <p>
+        This API is free and has no rate limit.<br />
+        The lyrics are fetched from the <a
+            href="https://npmjs.com/@stef-0012/synclyrics"><code>@stef-0012/synclyrics</code></a> NPM, which takes the
+        lyrics from <a href="https://musixmatch.com">Musixmatch</a>, <a href="https://lrclib.net">LrcLib.net</a> and <a
+            href="https://music.163.com">Netease</a>.
+    </p>
+
+    <h3>How Does It Work?</h3>
+    <p>
+        Just make a HTTP GET request to the <code>/lyrics</code> endpoint with your song's metadata as query parameter.
+    </p>
+
+    <h3>Avaible Query Parameters</h3>
+    <div class="list">
+        <ul>
+            <li>
+                <code>artist</code> - Song's artist.
+            </li>
+            <li>
+                <code>author</code> - Alias for <code>artist</code>.
+            </li>
+            <li>
+                <code>track</code> - Song's name.
+            </li>
+            <li>
+                <code>song</code> - Alias for <code>track</code>.
+            </li>
+            <li>
+                <code>album</code> - Song's album.
+            </li>
+            <li>
+                <code>length</code> - Song's length (in ms).
+            </li>
+            <li>
+                <code>duration</code> - Alias for <code>length</code>.
+            </li>
+        </ul>
+    </div>
+
+    <h3>Example Request</h3>
+    <div class="code-block-container">
+        <pre class="code-block-pre">
+            <code class="language-javascript code-block" id="codeBlockJs"></code>
+        </pre>
+    </div>
+
+    <h3>Example Response</h3>
+    <div class="code-block-container">
+        <pre class="code-block-pre">
+            <code class="language-json code-block" id="codeBlockJson"></code>
+        </pre>
+
+        <div class="footnotes">
+            <b>Note:</b> <code>lyrics</code> & <code>source</code> might be <code>null</code> if none of the providers
+            have the lyrics of your song.
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        async function fetchData() {
+            const codeBlockJson = document.getElementById('codeBlockJson');
+            const codeBlockJs = document.getElementById('codeBlockJs');
+
+            const exampleResponseRes = await fetch("/exampleResponse");
+            const exampleResponseData = await exampleResponseRes.json();
+
+            const exampleRequestRes = await fetch("/exampleRequest");
+            let exampleRequestData = await exampleRequestRes.text();
+
+            exampleRequestData = exampleRequestData.replace("<baseUrl>", window.location.origin);
+
+            codeBlockJson.innerHTML = JSON.stringify(exampleResponseData, null, 2);
+            codeBlockJs.innerHTML = exampleRequestData;
+        }
+
+        fetchData().then(() => {
+            hljs.highlightAll();
+        })
+    </script>
+</body>
+
 </html>
