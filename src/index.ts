@@ -18,11 +18,7 @@ const LyricsManager = new SyncLyrics({
 	cache,
 });
 
-app.get("/", (req, res) => {
-	res.sendFile(`${__dirname}/static/homepage.html`);
-});
-
-app.use("/lyrics", (req, res, next) => {
+app.use((req, res, next) => {
 	const start = Date.now();
 
 	res.on("finish", () => {
@@ -37,6 +33,10 @@ app.use("/lyrics", (req, res, next) => {
 	});
 
 	next();
+});
+
+app.get("/", (req, res) => {
+	res.sendFile(`${__dirname}/static/homepage.html`);
 });
 
 app.get("/lyrics", async (req, res) => {
